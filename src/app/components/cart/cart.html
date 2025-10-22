@@ -6,6 +6,7 @@
       <th>Precio unitario</th>
       <th>Cantidad</th>
       <th>Total</th>
+      <th>Acciones</th>
     </tr>
   </thead>
   <tbody>
@@ -15,6 +16,7 @@
         <td>{{ item.product.price }}</td>
         <td>{{ item.quantity }}</td>
         <td>{{ item.product.price * item.quantity }}</td>
+        <td><button class="btn btn-danger" (click)="remove(item)">eliminar</button></td>
       </tr>
     }
   </tbody>
