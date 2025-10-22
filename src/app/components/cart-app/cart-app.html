@@ -3,7 +3,7 @@
   <catalog [products]="products" (addCart)="onAddCart($event)"></catalog>
 
   @if (items.length > 0) {
-    <cart [items]="items" (removeItem)="removeItem($event)"></cart>
+    <cart [items]="items" (removeItem)="removeItem($event)" [total]="total"></cart>
   } @else {
     <div class="col-md-12">
       <div class="alert alert-info" role="alert">El carro de compras está vacío.</div>

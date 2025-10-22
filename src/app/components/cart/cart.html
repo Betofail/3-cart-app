@@ -16,8 +16,16 @@
         <td>{{ item.product.price }}</td>
         <td>{{ item.quantity }}</td>
         <td>{{ item.product.price * item.quantity }}</td>
-        <td><button class="btn btn-danger" (click)="remove(item)">eliminar</button></td>
+        <td><button class="btn btn-danger btn-sm" (click)="remove(item)">eliminar</button></td>
       </tr>
     }
   </tbody>
+  <tfoot>
+    <tr>
+      <td colspan="4" class="text-end fw-bold"><strong>Total general:</strong></td>
+      <td colspan="2" class="text-end fw-bold">
+        <strong>{{ total }}</strong>
+      </td>
+    </tr>
+  </tfoot>
 </table>

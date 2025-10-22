@@ -9,6 +9,7 @@ import { CartItem } from '../../models/cart-items';
 })
 export class Cart {
   @Input() items: CartItem[] = [];
+  @Input() total: number = 0;
 
   @Output() removeItem: EventEmitter<CartItem> = new EventEmitter();
 
