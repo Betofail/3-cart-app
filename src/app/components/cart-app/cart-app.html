@@ -1,6 +1,6 @@
 <h5 class="m-4">Tienda en linea</h5>
 <div class="row m-4">
-  <catalog [products]="products"></catalog>
+  <catalog [products]="products" (addCart)="onAddCart($event)"></catalog>
 
   @if (items.length > 0) {
     <cart [items]="items"></cart>

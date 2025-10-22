@@ -20,4 +20,7 @@ export class CartApp implements OnInit {
   ngOnInit(): void {
     this.products = this.service.findAll();
   }
+  onAddCart(product: Product): void {
+    this.items = [...this.items, { product: { ...product }, quantity: 1 }];
+  }
 }
