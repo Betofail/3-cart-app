@@ -1,4 +1,12 @@
-<h1 class="title">Carro de compras</h1>
-<div class="row">
+<h5 class="m-4">Tienda en linea</h5>
+<div class="row m-4">
   <catalog [products]="products"></catalog>
+
+  @if (items.length > 0) {
+    <cart [items]="items"></cart>
+  } @else {
+    <div class="col-md-12">
+      <div class="alert alert-info" role="alert">El carro de compras está vacío.</div>
+    </div>
+  }
 </div>

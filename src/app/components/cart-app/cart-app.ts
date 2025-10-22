@@ -3,6 +3,7 @@ import { ProductService } from '../../services/product.service';
 import { Product } from '../../models/product';
 import { Catalog } from '../catalog/catalog';
 import { Cart } from '../cart/cart';
+import { CartItem } from '../../models/cart-items';
 
 @Component({
   selector: 'cart-app',
@@ -12,7 +13,7 @@ import { Cart } from '../cart/cart';
 })
 export class CartApp implements OnInit {
   products: Product[] = [];
-  items: any[] = [];
+  items: CartItem[] = [];
 
   constructor(private service: ProductService) {}
 
