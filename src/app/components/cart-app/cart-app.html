@@ -1,12 +1,23 @@
-<h5 class="m-4">Tienda en linea</h5>
-<div class="row m-4">
-  <catalog [products]="products" (addCart)="onAddCart($event)"></catalog>
-
-  @if (items.length > 0) {
-    <cart [items]="items" (removeItem)="removeItem($event)" [total]="total"></cart>
-  } @else {
-    <div class="col-md-12">
-      <div class="alert alert-info" role="alert">El carro de compras está vacío.</div>
+<div class="container-flid p-0">
+  <navbar [items]="items" (toggleCart)="openCart()"></navbar>
+  <div class="d-flex align-items-center">
+    <h1 class="m-4">Tienda en linea</h1>
+  </div>
+  <div class="row m-4">
+    <div [className]="showCart ? 'col-8' : 'col-12'">
+      <catalog [products]="products" (addCart)="onAddCart($event)"></catalog>
     </div>
-  }
+    @if (showCart) {
+      <div class="col-4">
+        <button class="btn btn-default btn-sm col-1 float-end" (click)="openCart()">X</button>
+        @if (items.length > 0) {
+          <cart [items]="items" (removeItem)="removeItem($event)" [total]="total"></cart>
+        } @else {
+          <div class="col-md-12">
+            <div class="alert alert-info" role="alert">El carro de compras está vacío.</div>
+          </div>
+        }
+      </div>
+    }
+  </div>
 </div>
