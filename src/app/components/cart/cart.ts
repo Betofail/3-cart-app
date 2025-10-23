@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
 import { CartItem } from '../../models/cart-items';
 
 @Component({
@@ -7,13 +7,29 @@ import { CartItem } from '../../models/cart-items';
   templateUrl: './cart.html',
   standalone: true,
 })
-export class Cart {
+export class Cart implements OnChanges {
   @Input() items: CartItem[] = [];
-  @Input() total: number = 0;
+  total: number = 0;
 
   @Output() removeItem: EventEmitter<CartItem> = new EventEmitter();
 
+  ngOnChanges(): void {
+    this.calculateTotal();
+    this.saveOnSession();
+  }
+
   remove(cartItem: CartItem) {
     this.removeItem.emit(cartItem);
+  }
+
+  calculateTotal(): void {
+    this.total = this.items.reduce(
+      (accumulator, item) => accumulator + item.product.price * item.quantity,
+      0,
+    );
+  }
+
+  saveOnSession(): void {
+    sessionStorage.setItem('shopping-cart', JSON.stringify(this.items));
   }
 }
