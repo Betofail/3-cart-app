@@ -18,7 +18,12 @@
           <a class="nav-link active" aria-current="page" href="#">Home</a>
         </li>
         <li class="nav-item">
-          <a role="button" class="nav-link" href="#" (click)="toggleEvent()"
+          <a
+            [routerLink]="['/cart']"
+            [state]="{ items: items, total: total }"
+            role="button"
+            class="nav-link"
+            href="#"
             >Cart ({{ items.length }})</a
           >
         </li>
